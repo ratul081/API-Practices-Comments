@@ -45,14 +45,14 @@ const fullPost = posts => {
             <div class="card border border-warning border-2">
                 <div class="card-body">
                     <h4 class="card-title fs-5 mb-1">Name: ${posts.name}</h4>
-                        <div class="card-text">
-                            <p>Email: ${posts.email}</p>
-                            <p>${posts.body}</p>
-                        </div>
+                    <div class="card-text">
+                        <p>Email: ${posts.email}</p>
+                        <p>${posts.body}</p>
+                    </div>
                 </div>
             </div>
         </div>
-            <a class="btn-close position-absolute top-0 end-0 p-4" href="index.html" role="button"></a>
+        <a class="btn-close position-absolute top-0 end-0 p-4" href="index.html" role="button"></a>
     </nav>
     `
     postBox.appendChild(postDiv)
