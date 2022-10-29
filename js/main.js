@@ -10,15 +10,17 @@ const displayComments = comments => {
     comments.forEach(comment => {
         const commentDiv = document.createElement('div');
         commentDiv.classList.add('comment', 'col-6');
-        console.log(comment)
         commentDiv.innerHTML = `
-                    <div class="card border border-primary border-2 ">
+                    <div onclick="loadFullPost(${comment.id})" class="card border border-primary border-2 ">
                         <div class="card-body">
-                            <h4 class="card-title fs-5 mb-1">Name: ${comment.name.slice(0, 5)}</h4>
+                            <h4 class="card-title fs-5 mb-1">Name: ${comment.name.slice(0, 24)}</h4>
                             <div class="card-text">
                                 <p>Email: ${comment.email}</p>
                                 <p>${comment.body.slice(0, 150)}</p>
                             </div>
+                            <button type="button" class="full-post btn btn-primary">
+                    See Full Post
+                </button>
                         </div>
                     </div>
         `;
@@ -26,4 +28,33 @@ const displayComments = comments => {
     })
 }
 
-loadComments();
+const loadFullPost = (postId) => {
+    const fullPostUrl = `https://jsonplaceholder.typicode.com/comments/${postId}`
+    fetch(fullPostUrl)
+        .then(res => res.json())
+        .then(dataComments => fullPost(dataComments));
+}
+
+const fullPost = posts => {
+    const postBox = document.getElementById('full-comments');
+    postBox.innerHTML = '';
+    const postDiv = document.createElement('div');
+    postDiv.innerHTML = `
+    <div class="card border border-primary border-2 ">
+                        <div class="card-body">
+                            <h4 class="card-title fs-5 mb-1">Name: ${posts.name}</h4>
+                            <div class="card-text">
+                                <p>Email: ${posts.email}</p>
+                                <p>${posts.body}</p>
+                            </div>
+                        </div>
+                    </div>
+    `
+    postBox.appendChild(postDiv)
+
+
+
+}
+
+
+loadComments('');
