@@ -40,7 +40,7 @@ const fullPost = posts => {
     postBox.innerHTML = '';
     const postDiv = document.createElement('div');
     postDiv.innerHTML = `
-    <div class="card border border-primary border-2 ">
+    <div class="card border border-warning border-2 ">
                         <div class="card-body">
                             <h4 class="card-title fs-5 mb-1">Name: ${posts.name}</h4>
                             <div class="card-text">
@@ -52,9 +52,7 @@ const fullPost = posts => {
     `
     postBox.appendChild(postDiv)
 
-
-
 }
 
 
-loadComments('');
+loadComments();
